@@ -1,6 +1,13 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 const AddItems = () => {
+
+    const [user] = useAuthState(auth);
+    const email = user?.email;
+
+    console.log(email)
 
 
     const handleAddProduct = (e) => {
@@ -9,7 +16,7 @@ const AddItems = () => {
         const price = e.target.price.value;
         console.log(name, price)
 
-        const product = { name, price };
+        const product = { email, name, price };
 
         //send data to the server
         fetch('http://localhost:5000/add', {
