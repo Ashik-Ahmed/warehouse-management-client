@@ -14,9 +14,9 @@ const AddItems = () => {
         e.preventDefault();
         const name = e.target.name.value;
         const price = e.target.price.value;
-        console.log(name, price)
+        const quantity = e.target.quantity.value;
 
-        const product = { email, name, price };
+        const product = { email, name, price, quantity };
 
         //send data to the server
         fetch('http://localhost:5000/add', {
@@ -43,6 +43,8 @@ const AddItems = () => {
                 <input type="text" name='name' placeholder='Name' />
                 <br />
                 <input type="text" name='price' placeholder='Price' />
+                <br />
+                <input type="text" name='quantity' placeholder='Quantity' />
                 <br />
                 <input className='bg-blue-300 p-3 cursor-pointer' type="submit" value="Add" />
             </form>

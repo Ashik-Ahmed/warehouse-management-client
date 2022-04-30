@@ -1,18 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import useProducts from '../../Hooks/useProducts';
 
 const MyItems = () => {
 
-    const [myProducts, setMyProducts] = useState([]);
     const [user] = useAuthState(auth);
 
-    useEffect(() => {
-        fetch('http://localhost:5000/products')
-            .then(res => res.json())
-            .then(data => setMyProducts(data))
-    }, [user])
-
+    const [myProducts, setMyProducts] = useProducts();
     console.log(user?.email)
     const myItems = [];
 
