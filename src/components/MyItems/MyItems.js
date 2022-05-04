@@ -8,7 +8,6 @@ const MyItems = () => {
     const [user] = useAuthState(auth);
 
     const [myProducts, setMyProducts] = useProducts();
-    console.log(user?.email)
     const myItems = [];
 
     return (
@@ -23,7 +22,7 @@ const MyItems = () => {
 
             }
             {
-                myItems?.map(myItem => <p>{myItem.name}</p>)
+                myItems?.map(myItem => <p key={myItem._id}>{myItem.name}</p>)
             }
         </div >
     );

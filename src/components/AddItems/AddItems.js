@@ -7,16 +7,17 @@ const AddItems = () => {
     const [user] = useAuthState(auth);
     const email = user?.email;
 
-    console.log(email)
-
 
     const handleAddProduct = (e) => {
         e.preventDefault();
         const name = e.target.name.value;
         const price = e.target.price.value;
         const quantity = e.target.quantity.value;
+        const description = e.target.quantity.description;
+        const supplier = e.target.quantity.supplier;
+        const photo = e.target.quantity?.photo;
 
-        const product = { email, name, price, quantity };
+        const product = { email, name, price, quantity, description, supplier, photo };
 
         //send data to the server
         fetch('http://localhost:5000/add', {
@@ -40,13 +41,19 @@ const AddItems = () => {
         <div className='mt-16'>
             <h2>Adding Items</h2>
             <form onSubmit={handleAddProduct}>
-                <input type="text" name='name' placeholder='Name' />
+                <input type="text" name='name' placeholder='Name' required />
                 <br />
-                <input type="text" name='price' placeholder='Price' />
+                <input type="text" name='price' placeholder='Price' required />
                 <br />
-                <input type="text" name='quantity' placeholder='Quantity' />
+                <input type="text" name='description' placeholder='Description' required />
                 <br />
-                <input className='bg-blue-300 p-3 cursor-pointer' type="submit" value="Add" />
+                <input type="text" name='supplier' placeholder='Supplier' required />
+                <br />
+                <input type="text" name='quantity' placeholder='Quantity' required />
+                <br />
+                <input type="text" name='photo' placeholder='Photo Link' />
+                <br />
+                <input className='bg-blue-600 font-semibold cursor-pointer px-7 mt-4 rounded ' type="submit" value="Add" />
             </form>
         </div>
     );
