@@ -6,6 +6,7 @@ import Login from './components/Login/Login';
 import Signup from './components/Login/Signup';
 import ManageItems from './components/ManageItems/ManageItems';
 import MyItems from './components/MyItems/MyItems';
+import RequireAuth from './components/RequireAuth/RequireAuth';
 import Navbar from './components/Shared/Navbar/Navbar';
 import UpdateProduct from './components/UpdateProduct/UpdateProduct';
 
@@ -26,7 +27,12 @@ function App() {
         <Route path='/add' element={<AddItems></AddItems>}></Route>
         <Route path='/manage' element={<ManageItems></ManageItems>}></Route>
         <Route path='/myItems' element={<MyItems></MyItems>}></Route>
-        <Route path='/inventory/:id' element={<UpdateProduct></UpdateProduct>}></Route>
+        <Route path='/inventory/:id'
+          element={
+            <RequireAuth>
+              <UpdateProduct></UpdateProduct>
+            </RequireAuth>}>
+        </Route>
       </Routes>
 
 
