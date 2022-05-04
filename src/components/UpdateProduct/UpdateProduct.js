@@ -36,12 +36,20 @@ const UpdateProduct = () => {
         if (action === 'delivered') {
             if (product.quantity > 0) {
                 quantity = product.quantity - 1;
-                updatedProduct = { quantity };
+                const sold = parseInt(product?.sold || 0) + 1;
+                console.log(sold);
+                updatedProduct = { quantity, sold };
             }
         }
+
         if (action === 'updateQuantity') {
-            quantity = product.quantity + parseInt(q);
-            updatedProduct = { quantity };
+            if (q) {
+                quantity = product.quantity + parseInt(q);
+                updatedProduct = { quantity };
+            }
+            else {
+                alert('Please enter a number')
+            }
         }
 
         //send data to server
