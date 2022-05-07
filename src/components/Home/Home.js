@@ -13,8 +13,8 @@ const Home = () => {
                 {
                     products.slice(0, 10).map(product => <Product key={product._id} product={product}></Product>)
                 }
-                <Link to='/manage' className='bg-green-500 px-1 font-semibold rounded mb-0'>Manage Inventories</Link>
             </div>
+            <Link to='/manage' className='bg-green-500 px-1 font-semibold rounded mb-0'>Manage Inventories</Link>
         </div>
     );
 };

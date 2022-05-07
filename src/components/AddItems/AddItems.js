@@ -13,9 +13,9 @@ const AddItems = () => {
         const name = e.target.name.value;
         const price = e.target.price.value;
         const quantity = e.target.quantity.value;
-        const description = e.target.quantity.description;
-        const supplier = e.target.quantity.supplier;
-        const photo = e.target.quantity?.photo;
+        const description = e.target.description.value;
+        const supplier = e.target.supplier.value;
+        const photo = e.target.photo.value;
 
         const product = { email, name, price, quantity, description, supplier, photo };
 

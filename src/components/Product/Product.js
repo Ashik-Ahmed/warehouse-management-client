@@ -10,14 +10,14 @@ const Product = (props) => {
 
             <div className="max-w-sm text-left bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
                 <a href="#">
-                    <img className="rounded-t-lg" src="https://media.cnn.com/api/v1/images/stellar/prod/210922153639-best-smartphones-lead.jpg?q=x_0,y_54,h_2082,w_3701,c_crop/h_720,w_1280" alt="" />
+                    <img className="rounded-t-lg h-24 mx-auto p-2 border-b-4" src={photo || 'https://previews.123rf.com/images/aquir/aquir1311/aquir131100316/23569861-sample-grunge-red-round-stamp.jpg'} alt="" />
                 </a>
                 <div className="p-5">
                     <a href="#">
-                        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{name}</h5>
+                        <h5 className="mb-2 font-bold tracking-tight text-gray-900 dark:text-white">{name}</h5>
                     </a>
                     <p>Price: {price}</p>
-                    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{description || 'Sample description will appear here'}</p>
+                    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{description?.slice(0, 15) || 'Sample description will appear here'}</p>
                     <p>Available Qty: {quantity}</p>
                     <p>Supplier: {supplier || 'N/A'}</p>
                     <Link to={`/inventory/${_id}`} className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
