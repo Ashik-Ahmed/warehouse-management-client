@@ -1,16 +1,47 @@
+import { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
 import useProducts from '../../Hooks/useProducts';
 
 const MyItems = () => {
 
     const [user] = useAuthState(auth);
+    // const email = user.email;
 
-    const [myProducts, setMyProducts] = useProducts();
+
+    const [myProducts, setMyProducts] = useState([]);
     const myItems = [];
 
-    const handleProductDelete = (id) => {
 
+    useEffect(() => {
+
+        const getProducts = async () => {
+            const email = user.email;
+            const url = `http://localhost:5000/myproducts?email=${email}`;
+            // const { data } = await axiosPrivate.get(url);
+            fetch(url)
+                .then(res => res.json())
+                .then(data => setMyProducts(data))
+            // setMyProducts(data);
+
+            // try {
+
+            // }
+            // catch(error){
+            //     console.log(error.message);
+            //     if(error.response.status === 401 || error.response.status === 403){
+            //         signOut(auth);
+            //         navigate('/login')
+            //     }
+            // }
+            // console.log(myProducts)
+        }
+        getProducts();
+
+    }, [user])
+
+    const handleProductDelete = (id) => {
         const proceed = window.confirm("Are you sure??");
         if (proceed) {
             const url = `http://localhost:5000/product/${id}`;
@@ -33,14 +64,14 @@ const MyItems = () => {
     return (
         <div className='mt-16 mx-8'>
             <h2 className='font-bold'>Item list added by you</h2>
-            {
+            {/* {
                 myProducts.map(item => {
                     if (item?.email === user?.email) {
                         myItems.push(item);
                     }
                 })
 
-            }
+            } */}
             < div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -66,7 +97,7 @@ const MyItems = () => {
                         </tr>
                     </thead>
                     {
-                        myItems.map(product => {
+                        myProducts.map(product => {
 
                             return <>
 
@@ -76,19 +107,23 @@ const MyItems = () => {
                                             {product.name}
                                         </th>
                                         <td class="px-6 py-4">
-                                            <img className='w-8' src={product.img || 'https://previews.123rf.com/images/aquir/aquir1311/aquir131100316/23569861-sample-grunge-red-round-stamp.jpg'} alt="" />
+                                            <img className='w-8' src={product.photo || 'https://previews.123rf.com/images/aquir/aquir1311/aquir131100316/23569861-sample-grunge-red-round-stamp.jpg'} alt="" />
                                         </td>
                                         <td class="px-6 py-4">
                                             $ {product.price}
                                         </td>
                                         <td class="px-6 py-4">
-                                            {product.quantity}
+                                            {product.quantity > 0 ? product.quantity : 'Out of Stock'}
                                         </td>
                                         <td class="px-6 py-4">
-                                            {product.sold || 'N/A'}
+                                            {product.sold > 0 ? product.sold : 0}
                                         </td>
                                         <td class="px-6 py-4 text-right">
-                                            <button onClick={() => handleProductDelete(product._id)} class="font-medium text-white bg-red-600 p-2 rounded">Delete</button>
+                                            <div className='flex gap-x-3'>
+                                                <button class="font-medium text-white bg-blue-400 p-2 rounded"> <Link to={`/inventory/${product._id}`}>Edit</Link> </button>
+                                                <button onClick={() => handleProductDelete(product._id)} class="font-medium text-white bg-red-600 p-2 rounded">Delete</button>
+
+                                            </div>
                                         </td>
                                     </tr>
                                 </tbody>

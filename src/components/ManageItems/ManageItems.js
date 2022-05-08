@@ -56,7 +56,7 @@ const ManageItems = () => {
                                 Sold
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                <span class="sr-only">Edit</span>
+                                Action
                             </th>
                         </tr>
                     </thead>
@@ -71,19 +71,22 @@ const ManageItems = () => {
                                             {product.name}
                                         </th>
                                         <td class="px-6 py-4">
-                                            <img className='w-8' src={product.img || 'https://previews.123rf.com/images/aquir/aquir1311/aquir131100316/23569861-sample-grunge-red-round-stamp.jpg'} alt="" />
+                                            <img className='w-8' src={product.photo || 'https://previews.123rf.com/images/aquir/aquir1311/aquir131100316/23569861-sample-grunge-red-round-stamp.jpg'} alt="" />
                                         </td>
                                         <td class="px-6 py-4">
                                             $ {product.price}
                                         </td>
                                         <td class="px-6 py-4">
-                                            {product.quantity}
+                                            {product.quantity > 0 ? product.quantity : 'Out of Stock'}
                                         </td>
                                         <td class="px-6 py-4">
-                                            {product.sold || 'N/A'}
+                                            {product.sold > 0 ? product.sold : 0}
                                         </td>
                                         <td class="px-6 py-4 text-right">
-                                            <button onClick={() => handleProductDelete(product._id)} class="font-medium text-white bg-red-600 p-2 rounded">Delete</button>
+                                            <div className='flex gap-x-3'>
+                                                <button class="font-medium text-white bg-blue-400 p-2 rounded"> <Link to={`/inventory/${product._id}`}>Edit</Link> </button>
+                                                <button onClick={() => handleProductDelete(product._id)} class="font-medium text-white bg-red-600 p-2 rounded">Delete</button>
+                                            </div>
                                         </td>
                                     </tr>
                                 </tbody>

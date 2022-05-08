@@ -38,9 +38,21 @@ const Login = () => {
 
     // sign in with email and password 
     const [signInWithEmailAndPassword, emailUser, emailLoading, emailError,] = useSignInWithEmailAndPassword(auth);
-    const handleSignInWithEmailAndPassword = (e) => {
+    const handleSignInWithEmailAndPassword = async e => {
         e.preventDefault();
-        signInWithEmailAndPassword(userInfo.email, userInfo.password);
+        await signInWithEmailAndPassword(userInfo.email, userInfo.password);
+
+
+        //send data to the server
+        fetch('http://localhost:5000/login', {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(userInfo.email)
+        })
+            .then(res => res.json())
+            .then(data => console.log(data))
     }
     // user sign in successful and failed notification 
     useEffect(() => {
@@ -123,7 +135,7 @@ const Login = () => {
     // navigate to required page if user exists 
     useEffect(() => {
         if (authUser) {
-            navigate(from, { replace: true });
+            // navigate(from, { replace: true });
         }
         if (authError) {
             toast.warn(authError.message);
