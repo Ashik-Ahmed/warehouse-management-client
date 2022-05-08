@@ -139,7 +139,7 @@ const Login = () => {
     // navigate to required page if user exists 
     useEffect(() => {
         if (authUser) {
-
+            navigate(from, { replace: true });
         }
         if (authError) {
             toast.warn(authError.message);
