@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { FaUserAlt } from 'react-icons/fa';
 
 const Login = () => {
     // set user informations in state 
@@ -49,10 +50,11 @@ const Login = () => {
             headers: {
                 "content-type": "application/json"
             },
-            body: JSON.stringify(userInfo.email)
+            body: JSON.stringify({ email: userInfo.email })
         })
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => localStorage.setItem('accessToken', data.accessToken))
+        navigate(from, { replace: true });
     }
 
 
@@ -137,7 +139,7 @@ const Login = () => {
     // navigate to required page if user exists 
     useEffect(() => {
         if (authUser) {
-            navigate(from, { replace: true });
+
         }
         if (authError) {
             toast.warn(authError.message);
@@ -177,7 +179,7 @@ const Login = () => {
                                             <label for="remember" className="font-medium text-gray-50 dark:text-gray-300">Remember me</label>
                                         </div>
                                     </div>
-                                    <button type="submit" className="mb-2 text-white bg-pink-600 hover:bg-pink-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Login</button>
+                                    <button type="submit" className="flex items-center justify-center mx-auto gap-x-1 mb-2 text-white bg-pink-600 hover:bg-pink-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"> <span><FaUserAlt /></span> Login</button>
                                     <br />
 
                                 </form>

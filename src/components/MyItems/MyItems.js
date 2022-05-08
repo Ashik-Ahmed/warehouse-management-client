@@ -15,33 +15,27 @@ const MyItems = () => {
     const [myProducts, setMyProducts] = useState([]);
 
 
+    //get products by user email
     useEffect(() => {
-
         const getProducts = async () => {
             const email = user.email;
-            const url = `https://gentle-meadow-44621.herokuapp.com/myproducts?email=${email}`;
-            // const { data } = await axiosPrivate.get(url);
-            fetch(url)
+            const url = `http://localhost:5000/myproducts?email=${email}`;
+
+            fetch(url, {
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                }
+            })
                 .then(res => res.json())
                 .then(data => setMyProducts(data))
-            // setMyProducts(data);
 
-            // try {
-
-            // }
-            // catch(error){
-            //     console.log(error.message);
-            //     if(error.response.status === 401 || error.response.status === 403){
-            //         signOut(auth);
-            //         navigate('/login')
-            //     }
-            // }
-            // console.log(myProducts)
         }
         getProducts();
 
     }, [user])
 
+
+    //delete an item
     const handleProductDelete = (id) => {
         const proceed = window.confirm("Are you sure??");
         if (proceed) {
@@ -65,14 +59,7 @@ const MyItems = () => {
     return (
         <div className='mt-16 mx-8'>
             <h2 className='font-bold'>Item list added by you</h2>
-            {/* {
-                myProducts.map(item => {
-                    if (item?.email === user?.email) {
-                        myItems.push(item);
-                    }
-                })
 
-            } */}
 
             {
                 myProducts.length > 0 ?

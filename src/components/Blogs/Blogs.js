@@ -161,7 +161,8 @@ const Blogs = () => {
                                 These databases are best suited for complex queries
                             </td>
                             <td class="px-6 py-4">
-                                These databases are not so good for complex queries                    </td>
+                                These databases are not so good for complex queries
+                            </td>
                         </tr>
 
                     </tbody>
@@ -171,7 +172,7 @@ const Blogs = () => {
             <div className='mt-8'>
                 <h4 className='text-left text-xl font-bold my-3'>Q3.What is the purpose of jwt and how does it work</h4>
 
-                <p className='text-left'>JSON Web Token is a standard used to create access tokens for an application.
+                <p className='text-left mb-8'>JSON Web Token is a standard used to create access tokens for an application.
 
                     It works this way: the server generates a token that certifies the user identity, and sends it to the client.
 

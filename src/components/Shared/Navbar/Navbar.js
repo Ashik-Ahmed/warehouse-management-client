@@ -4,6 +4,8 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import CustomLink from '../../../CustomLink/CustomLink';
 import auth from '../../../firebase.init';
+import { MdLogout } from 'react-icons/md';
+import { HiOutlineLogin } from 'react-icons/hi';
 
 
 const Navbar = () => {
@@ -48,12 +50,12 @@ const Navbar = () => {
                                         <CustomLink to='/add' className="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-pink-500 md:border-0 md:hover:text-blue-700 dark:text-gray-400 dark:hover:text-white dark:border-gray-700">Add Items</CustomLink>
                                     </li>
                                     <li onClick={handleSignOut}>
-                                        <CustomLink to='/login' className="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-pink-500 md:border-0 md:hover:text-blue-700 dark:text-gray-400 dark:hover:text-white dark:border-gray-700">Sign out</CustomLink>
+                                        <CustomLink to='/login' className="flex items-center gap-x-1 py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-pink-500 md:border-0 md:hover:text-blue-700 dark:text-gray-400 dark:hover:text-white dark:border-gray-700">  Logout<span className='font-bold text-lg'><MdLogout /></span></CustomLink>
                                     </li>
                                 </>
                                 :
                                 <li>
-                                    <CustomLink to='/login' className="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-pink-500 md:border-0 md:hover:text-blue-700 dark:text-gray-400 dark:hover:text-white dark:border-gray-700">Sign in</CustomLink>
+                                    <CustomLink to='/login' className="flex items-center gap-x-1 py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-pink-500 md:border-0 md:hover:text-blue-700 dark:text-gray-400 dark:hover:text-white dark:border-gray-700">Sign in <span className='text-lg'><HiOutlineLogin /></span></CustomLink>
                                 </li>
 
                         }
