@@ -9,6 +9,7 @@ import ManageItems from './components/ManageItems/ManageItems';
 import MyItems from './components/MyItems/MyItems';
 import NotFound from './components/NotFound/NotFound';
 import RequireAuth from './components/RequireAuth/RequireAuth';
+import Footer from './components/Shared/Footer/Footer';
 import Navbar from './components/Shared/Navbar/Navbar';
 import UpdateProduct from './components/UpdateProduct/UpdateProduct';
 
@@ -50,7 +51,7 @@ function App() {
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
 
-
+      <Footer></Footer>
     </div>
   );
 }
