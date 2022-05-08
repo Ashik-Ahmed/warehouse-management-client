@@ -44,7 +44,7 @@ const Login = () => {
 
 
         //send data to the server
-        await fetch('http://localhost:5000/login', {
+        await fetch('https://gentle-meadow-44621.herokuapp.com/login', {
             method: "POST",
             headers: {
                 "content-type": "application/json"

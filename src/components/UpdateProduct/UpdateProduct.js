@@ -8,7 +8,7 @@ const UpdateProduct = () => {
 
     //load the specific product by id
     useEffect(() => {
-        const url = `http://localhost:5000/product/${id}`;
+        const url = `https://gentle-meadow-44621.herokuapp.com/product/${id}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setProduct(data))
@@ -53,7 +53,7 @@ const UpdateProduct = () => {
         }
 
         //send data to server
-        const url = `http://localhost:5000/product/${id}`;
+        const url = `https://gentle-meadow-44621.herokuapp.com/product/${id}`;
         fetch(url, {
             method: 'PUT',
             headers: {

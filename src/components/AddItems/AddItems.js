@@ -20,7 +20,7 @@ const AddItems = () => {
         const product = { email, name, price, quantity, description, supplier, photo };
 
         //send data to the server
-        fetch('http://localhost:5000/add', {
+        fetch('https://gentle-meadow-44621.herokuapp.com/add', {
             method: "POST",
             headers: {
                 "content-type": "application/json"
