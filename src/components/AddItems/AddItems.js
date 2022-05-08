@@ -7,7 +7,7 @@ const AddItems = () => {
     const [user] = useAuthState(auth);
     const email = user?.email;
 
-
+    //function to add products to db
     const handleAddProduct = (e) => {
         e.preventDefault();
         const name = e.target.name.value;
@@ -40,23 +40,6 @@ const AddItems = () => {
     return (
         <div className='pt-16 h-screen'>
             <h2>Adding Items</h2>
-            {/* <form onSubmit={handleAddProduct}>
-                <input type="text" name='name' placeholder='Name' required />
-                <br />
-                <input type="text" name='price' placeholder='Price' required />
-                <br />
-                <input type="text" name='description' placeholder='Description' required />
-                <br />
-                <input type="text" name='supplier' placeholder='Supplier' required />
-                <br />
-                <input type="text" name='quantity' placeholder='Quantity' required />
-                <br />
-                <input type="text" name='photo' placeholder='Photo Link' />
-                <br />
-                <input className='bg-blue-600 font-semibold cursor-pointer px-7 mt-4 rounded ' type="submit" value="Add" />
-            </form> */}
-
-
 
             <form onSubmit={handleAddProduct} className='w-1/2 mx-auto border-2 rounded text-left p-4 bg-green-100 shadow-lg'>
                 <div class="relative z-0 w-full mb-6 group">

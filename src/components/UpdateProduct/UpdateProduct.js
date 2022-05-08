@@ -17,10 +17,12 @@ const UpdateProduct = () => {
     let updatedProduct;
     let quantity = product?.quantity;
 
+
     const handleDelivered = (action) => {
         updateProduct('delivered')
 
     }
+
 
     const handleUpdateQuantity = (e) => {
         e.preventDefault();
@@ -30,9 +32,8 @@ const UpdateProduct = () => {
 
     }
 
-
+    // function to update product quantity 
     const updateProduct = (action, q) => {
-
         if (action === 'delivered') {
             if (product.quantity > 0) {
                 quantity = product.quantity - 1;

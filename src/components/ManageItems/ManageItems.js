@@ -5,8 +5,11 @@ import { TiEdit } from 'react-icons/ti';
 
 const ManageItems = () => {
 
+    // getting the products 
     const [products, setProducts] = useProducts();
 
+
+    // delete a product from db and ui 
     const handleProductDelete = (id) => {
 
         const proceed = window.confirm("Are you sure??");
