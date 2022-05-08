@@ -19,7 +19,7 @@ const MyItems = () => {
     useEffect(() => {
         const getProducts = async () => {
             const email = user.email;
-            const url = `http://localhost:5000/myproducts?email=${email}`;
+            const url = `https://gentle-meadow-44621.herokuapp.com/myproducts?email=${email}`;
 
             fetch(url, {
                 headers: {
