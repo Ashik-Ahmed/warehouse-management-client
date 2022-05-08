@@ -1,0 +1,7 @@
+.hero {
+    display: block;
+    box-sizing: border-box;
+    height: 300px;
+    background-color: #dc3d4b;
+    clip-path: ellipse(273% 100% at 206.1% 0%);
+}

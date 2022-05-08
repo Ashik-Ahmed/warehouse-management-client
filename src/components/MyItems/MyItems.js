@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
+import { MdDeleteForever } from 'react-icons/md';
+import { TiEdit } from 'react-icons/ti';
 import useProducts from '../../Hooks/useProducts';
 
 const MyItems = () => {
@@ -118,11 +120,11 @@ const MyItems = () => {
                                         <td class="px-6 py-4">
                                             {product.sold > 0 ? product.sold : 0}
                                         </td>
-                                        <td class="px-6 py-4 text-right">
+                                        <td class="px-6 py-1 text-right">
                                             <div className='flex gap-x-3'>
-                                                <button class="font-medium text-white bg-blue-400 p-2 rounded"> <Link to={`/inventory/${product._id}`}>Edit</Link> </button>
-                                                <button onClick={() => handleProductDelete(product._id)} class="font-medium text-white bg-red-600 p-2 rounded">Delete</button>
-
+                                                <Link to={`/inventory/${product._id}`}>
+                                                    <button style={{ 'background': '#32C6D9' }} class="flex items-center gap-x-2 font-medium text-white p-2 rounded"><span><TiEdit /></span>  Edit </button></Link>
+                                                <button onClick={() => handleProductDelete(product._id)} class="flex items-center font-medium text-white bg-red-600 p-2 rounded"><span className='text-lg'><MdDeleteForever /></span> Delete</button>
                                             </div>
                                         </td>
                                     </tr>

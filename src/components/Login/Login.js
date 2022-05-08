@@ -44,7 +44,7 @@ const Login = () => {
 
 
         //send data to the server
-        fetch('http://localhost:5000/login', {
+        await fetch('http://localhost:5000/login', {
             method: "POST",
             headers: {
                 "content-type": "application/json"
@@ -54,6 +54,8 @@ const Login = () => {
             .then(res => res.json())
             .then(data => console.log(data))
     }
+
+
     // user sign in successful and failed notification 
     useEffect(() => {
         if (emailUser) {
@@ -135,7 +137,7 @@ const Login = () => {
     // navigate to required page if user exists 
     useEffect(() => {
         if (authUser) {
-            // navigate(from, { replace: true });
+            navigate(from, { replace: true });
         }
         if (authError) {
             toast.warn(authError.message);
